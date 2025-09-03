@@ -1,0 +1,8 @@
+* {
+
+    padding: 0px; /* Margem interna */
+    margin: 0px; /* Marge externa */
+    box-sizing: border-box; /* Muda a estrutura de espaçamentos */
+    font-family:"inter";
+
+}
