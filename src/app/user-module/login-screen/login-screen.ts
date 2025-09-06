@@ -11,6 +11,11 @@ export class LoginScreen {
 
   loginForm: FormGroup;
 
+  emailErrorMessege: string;
+  passwordErrorMessege: string;
+  loginEfetuado: string;
+  loginRecusado: string;
+
   constructor(private fb: FormBuilder) {
     //Quando a tela iniciar.
 
@@ -18,32 +23,44 @@ export class LoginScreen {
     //Cria o campo obrigatório de email.
     //Cria o campo obrigatório de senha.
     this.loginForm = this.fb.group({
+
       email: ["", [Validators.required]],
       password: ["", [Validators.required]]
+
     });
+
+    this.emailErrorMessege = "";
+    this.passwordErrorMessege = "";
+    this.loginEfetuado = ""
+    this.loginRecusado = ""
 
   }
 
   async onLoginClick() {
 
     //alert("Botão de login clicado.");
+    this.emailErrorMessege = "";
+    this.passwordErrorMessege = "";
+    this.loginEfetuado = "";
+    this.loginRecusado = "";
+
 
     console.log("Email", this.loginForm.value.email);
     console.log("Password", this.loginForm.value.password);
 
-  //while (this.loginForm.value.email == "" && this.loginForm.value.password == "") {
-  //alert ("Preencha email e senha")  BOA TENTATIVA
   if (this.loginForm.value.email == ""){
-    alert ("Preencha o e-mail")
+
+
+   this.emailErrorMessege = "O Campo de e-mail é obrigatório."
   return;
   }
 
   if (this.loginForm.value.password == ""){
-    alert ("Preencha a senha")
-  return;
+    this.passwordErrorMessege = "O Campo de Senha é obrigatório."
+    return;
     }
 
-    }
+
 
     let response = await fetch("https://senai-gpt-api.azurewebsites.net/login", {
 
@@ -62,11 +79,12 @@ export class LoginScreen {
     console.log ("STATUS CODE" , response.status)
 
     if(response.status>=200 && response.status <=299){
-      alert("Acesso Autorizado")
+    this.loginEfetuado = "Acesso Autorizado, carregando informações"
+
+
     }else{
-      alert("Acesso Negado")
+    this.loginEfetuado = "Acesso Negado, Verifique seus dados"
+
+      //alert("Acesso Negado")
     }
-
-  }
-
-}
+}}

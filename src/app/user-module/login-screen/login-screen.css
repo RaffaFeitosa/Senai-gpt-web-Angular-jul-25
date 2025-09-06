@@ -11,7 +11,7 @@
 }
 .robo-image {
 
-    background-image: url("/imgs/Rectangle\ 2x.png");
+    background-image: url("/imgs/Rectangle 2x.png");
     background-size: cover;
     background-position: 0px -100px;
 
@@ -68,5 +68,21 @@ img /* Tags, sem nenhum prefixo */
     border-radius: 12px;
     color: #ffffff;
     cursor: pointer;
+
+}
+
+.error-messege {
+
+  color: red;
+  font-size: 12px;
+  transform: translateY(-12px) translateX(-90px);
+
+}
+
+.login {
+  color: rgb(62, 62, 223);
+  font-size: 16px;
+  display: flex;
+  margin-top: 10px;
 
 }
