@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginScreen {
   loginEfetuado: string;
   loginRecusado: string;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {
     //Quando a tela iniciar.
 
     //Inicia o formulario
@@ -48,27 +48,24 @@ export class LoginScreen {
     console.log("Email", this.loginForm.value.email);
     console.log("Password", this.loginForm.value.password);
 
-  if (this.loginForm.value.email == ""){
+    if (this.loginForm.value.email == "") {
 
 
-   this.emailErrorMessege = "O Campo de e-mail é obrigatório."
-  return;
-  }
+      this.emailErrorMessege = "O Campo de e-mail é obrigatório."
+      return;
+    }
 
-  if (this.loginForm.value.password == ""){
-    this.passwordErrorMessege = "O Campo de Senha é obrigatório."
-    return;
+    if (this.loginForm.value.password == "") {
+      this.passwordErrorMessege = "O Campo de Senha é obrigatório."
+      return;
     }
 
 
 
     let response = await fetch("https://senai-gpt-api.azurewebsites.net/login", {
-
-
-
       method: "POST", //ENVIAR,
       headers: {
-        "Content-Type" : "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         email: this.loginForm.value.email,
@@ -76,15 +73,31 @@ export class LoginScreen {
       })
     });
 
-    console.log ("STATUS CODE" , response.status)
+    console.log("STATUS CODE", response.status)
 
-    if(response.status>=200 && response.status <=299){
-    this.loginEfetuado = "Acesso Autorizado, carregando informações"
+    if (response.status >= 200 && response.status <= 299) {
+      this.loginEfetuado = "Acesso Autorizado, carregando informações"
+
+      let json = await response.json();
 
 
-    }else{
-    this.loginEfetuado = "Acesso Negado, Verifique seus dados"
+      console.log("JSON", json)
+
+      let meuToken = json.accessToken;
+      let meuId = json.user.id;
+
+      localStorage.setItem("meuToken", meuToken);
+      localStorage.setItem("meuId", meuId);
+
+
+
+    } else {
+      this.loginRecusado = "Acesso Negado, Verifique seus dados"
 
       //alert("Acesso Negado")
     }
-}}
+
+
+    this.cd.detectChanges();
+  }
+}
