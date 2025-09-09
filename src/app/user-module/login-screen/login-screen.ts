@@ -89,6 +89,8 @@ export class LoginScreen {
       localStorage.setItem("meuToken", meuToken);
       localStorage.setItem("meuId", meuId);
 
+      window.location.href = "chat"
+
 
 
     } else {
