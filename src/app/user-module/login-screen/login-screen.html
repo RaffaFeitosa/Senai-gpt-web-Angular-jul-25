@@ -1,34 +1,34 @@
-    <body>
+<div>
 
-        <header></header> <!-- Cabeçalho -->
+  <header></header> <!-- Cabeçalho -->
 
-        <main class="page-container"> <!-- Caixa maior -->
+  <main class="page-container"> <!-- Caixa maior -->
 
-            <div class="robo-image">
+    <div class="robo-image">
 
-            </div>
+    </div>
 
-            <div class="login-container" [formGroup]="loginForm">
+    <div class="login-container" [formGroup]="loginForm">
 
-                <img class="logo" src="imgs/Chat (2).png" alt="Logo do SenaiGPT.">
+      <img class="logo" src="imgs/Chat (2).png" alt="Logo do SenaiGPT.">
 
 
-                <h1 class="titulo">Login</h1>
+      <h1 class="titulo">Login</h1>
 
-                <input class="inpt" type="email" placeholder="Insira o e-mail" formControlName="email">
-                <span class="error-messege">{{emailErrorMessege}}</span>
+      <input class="inpt" type="email" placeholder="Insira o e-mail" formControlName="email">
+      <span class="error-messege">{{emailErrorMessege}}</span>
 
-                <input class="inpt" type="password" placeholder="Insira a senha" formControlName="password">
-                <span class="error-messege">{{passwordErrorMessege}}</span>
+      <input class="inpt" type="password" placeholder="Insira a senha" formControlName="password">
+      <span class="error-messege">{{passwordErrorMessege}}</span>
 
-                <button class="button" (click)=" onLoginClick()">Entrar</button>
-                <span class="login"> {{loginEfetuado}} </span>
-                <span class="negado"> {{loginRecusado}}</span>
+      <button class="button" (click)=" onLoginClick()">Entrar</button>
+      <span class="login"> {{loginEfetuado}} </span>
+      <span class="negado"> {{loginRecusado}}</span>
 
-            </div>
+    </div>
 
-        </main>
+  </main>
 
-        <footer></footer> <!-- Rodapé -->
+  <footer></footer> <!-- Rodapé -->
 
-    </body>
+</div>

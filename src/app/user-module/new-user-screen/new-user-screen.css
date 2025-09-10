@@ -1,0 +1,93 @@
+
+.titulo {
+
+    font-size: 76px;
+    font-weight: 400;
+    margin-bottom: 16px;
+
+}
+.robo-image {
+
+    background-image: url("/imgs/robo.png");
+    background-size: cover;
+    background-position: 0px -100px;
+
+    width: 50vw; /* 50% da tela horizontal */
+    height: 100vh; /* 100% da tela vertical */
+
+}
+
+.page-container {
+
+    display: flex; /* um ao lado do outro */
+
+}
+
+.login-container {
+
+    width: 50vw;
+    height: 100vh;
+
+    /* Kit Sobrevivencia da centralizacao  */
+    display: flex; /* Ativar o flex */
+    flex-direction: column; /* Muda o flex para colunas */
+    align-items: center; /* Centralizar Horizontalmente */
+    justify-content: center; /* Centralizar Verticalmente */
+
+}
+
+.classe /* Com ponto antes */
+#id  /* com hashtag antes */
+img /* Tags, sem nenhum prefixo */
+
+.login-container img {
+    height: 60px;
+
+}
+
+.inpt {
+
+    padding: 18px;
+    background-color: #F7F9FB;
+    width: 377px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 16px;
+
+}
+
+.button {
+
+    padding: 18px;
+    background-color: #1c1c1c;
+    width: 377px;
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    cursor: pointer;
+
+}
+
+.error-messege {
+
+  color: red;
+  font-size: 12px;
+  transform: translateY(-12px) translateX(-90px);
+
+}
+
+.login {
+  color: black;
+  font-size: 16px;
+  display: flex;
+  margin-top: 10px;
+
+}
+
+.negado {
+  color: red;
+  font-size: 16px;
+  display: flex;
+  margin-top: 10px;
+
+}
