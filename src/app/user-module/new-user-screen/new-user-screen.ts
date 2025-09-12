@@ -14,8 +14,6 @@ export class NewUserScreen {
   nameErrorMessege: string;
   emailErrorMessege: string;
   passwordErrorMessege: string;
-  loginEfetuado: string;
-  loginRecusado: string;
 
 
   constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {
@@ -35,8 +33,6 @@ export class NewUserScreen {
     this.nameErrorMessege = "";
     this.emailErrorMessege = "";
     this.passwordErrorMessege = "";
-    this.loginEfetuado = "";
-    this.loginRecusado = "";
 
 
   }
@@ -47,8 +43,7 @@ export class NewUserScreen {
     this.nameErrorMessege = "";
     this.emailErrorMessege = "";
     this.passwordErrorMessege = "";
-    this.loginEfetuado = "";
-    this.loginRecusado = "";
+
 
 
     console.log("Name", this.nameErrorMessege);
@@ -74,7 +69,7 @@ export class NewUserScreen {
     let response = await fetch("https://senai-gpt-api.azurewebsites.net/users", {
       method: "POST", //ENVIAR,
       headers: {
-       // "Content-Type": "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         name: this.newUserScreen.value.name,
@@ -86,23 +81,16 @@ export class NewUserScreen {
     console.log("STATUS CODE", response.status)
 
     if (response.status >= 200 && response.status <= 299) {
-      this.loginEfetuado = "Acesso Autorizado, carregando informações"
 
       let json = await response.json();
 
       console.log("JSON", json)
 
-      let meuToken = json.accessToken;
-      let meuId = json.user.id;
-
-      localStorage.setItem("meuToken", meuToken);
-      localStorage.setItem("meuId", meuId);
-
-      window.location.href = "chat"
+      window.location.href = "login"
 
 
     } else {
-      this.loginRecusado = "Acesso Negado, Verifique seus dados"
+     "Erro inseperado tente novamente mais tarde"
 
       //alert("Acesso Negado")
     }
