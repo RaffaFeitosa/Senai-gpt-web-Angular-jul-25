@@ -60,9 +60,12 @@ export class NewUserScreen {
       return;
     }
 
-    if (this.newUserScreen.value.password == "") {
+    if (this.newUserScreen.value.password == "" ) {
       this.passwordErrorMessege = "O Campo de Senha é obrigatório."
       return;
+
+//    } else if (this.newUserScreen.value.password.length <= 6){
+  //    this.passwordErrorMessege = ""
     }
 
 

@@ -90,7 +90,7 @@ export class LoginScreen {
       localStorage.setItem("meuId", meuId);
 
       window.location.href = "chat"
-
+      
 
 
     } else {
