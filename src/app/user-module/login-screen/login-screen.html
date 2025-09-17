@@ -14,10 +14,10 @@
 
       <h1 class="titulo">Login</h1>
 
-      <input class="inpt" type="email" placeholder="Insira o e-mail" formControlName="email">
+      <input class="inpt" type="email" placeholder="Insira o e-mail" formControlName="email" (keydown.enter)="onLoginClick()">
       <span class="error-messege">{{emailErrorMessege}}</span>
 
-      <input class="inpt" type="password" placeholder="Insira a senha" formControlName="password">
+      <input class="inpt" type="password" placeholder="Insira a senha" formControlName="password" (keydown.enter)="onLoginClick()">
       <span class="error-messege">{{passwordErrorMessege}}</span>
 
       <button class="button" (click)=" onLoginClick()">Entrar</button>

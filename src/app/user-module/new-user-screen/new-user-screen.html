@@ -9,17 +9,17 @@
 
     <h1 class="titulo">Novo Usuário</h1>
 
-    <input class="inpt" type="name" placeholder="Insira o nome do usuário" formControlName="name">
+    <input class="inpt" type="name" placeholder="Insira o nome do usuário" formControlName="name" (keydown.enter)="onEnterClick()">
     <span class="error-messege">{{nameErrorMessege}}</span>
 
-    <input class="inpt" type="email" placeholder="Insira o e-mail" formControlName="email">
+    <input class="inpt" type="email" placeholder="Insira o e-mail" formControlName="email"(keydown.enter)="onEnterClick()">
     <span class="error-messege">{{emailErrorMessege}}</span>
 
-    <input class="inpt" type="password" placeholder="Insira a senha" formControlName="password">
+    <input class="inpt" type="password" placeholder="Insira a senha" formControlName="password"(keydown.enter)="onEnterClick()">
     <span class="error-messege">{{passwordErrorMessege}}</span>
 
 
-    <input class="inpt" type="password" placeholder="Confirme a senha" formControlName="password">
+    <input class="inpt" type="password" placeholder="Confirme a senha" formControlName="password"(keydown.enter)="onEnterClick()">
     <span class="error-messege">{{passwordErrorMessege}}</span>
 
     <button class="button" (click)=" onEnterClick()">Criar nova conta</button>

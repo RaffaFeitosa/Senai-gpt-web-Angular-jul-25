@@ -3,11 +3,14 @@
     <div class="top">
       <button class="novo-chat-button">+ New Chat</button>
 
-      <button *ngFor="let chat of chats" class="conversa">
+      @for (chat of chats; track $index) {
+
+      <button class="conversa" (click)="onChatClick(chat)">
         <i class="fa-regular fa-comment-dots"></i>
         {{ chat.chatTitle }}
       </button>
 
+    }
     </div>
 
     <div class="bottom">
