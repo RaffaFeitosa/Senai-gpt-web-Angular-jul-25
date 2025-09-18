@@ -10,7 +10,7 @@
         {{ chat.chatTitle }}
       </button>
 
-    }
+      }
     </div>
 
     <div class="bottom">
@@ -37,6 +37,7 @@
 
 
   <main class="central-panel">
+    @if (chatSelecionado == null){
     <div class="logosenai">
       <img src="imgs/Chat (2).png" alt="Login SenaiGPT">
 
@@ -72,17 +73,37 @@
       </div>
     </div>
 
+    }
+
+    @if (chatSelecionado != null){
+
+    <div class="chat-container">
+      <div class="chat-header">
+
+        <h2>{{ chatSelecionado.chatTitle }}</h2>
+
+      </div>
+
+      <div class="chat-messages">
+        @for (msg of mensagens; track $index){
+        <p class="message-item" [class.chatbot]="msg.userId == 'chatbot'">{{ msg.text }}</p>
+        }
+      </div>
+    </div>
+
+    }
+
     <div class="input-container">
 
       <i class="fa-solid fa-microphone-lines"></i>
+
       <i class="fa-regular fa-images"></i>
-      <input type="text" placeholder="Type message">
-      <i class="fa-regular fa-paper-plane"></i>
+
+      <input [formControl]="mensagenUsuario" type="text" placeholder="Type message">
+
+      <i class="fa-regular fa-paper-plane" (click)="enviarMensagem"></i>
 
     </div>
-
-
-
 
   </main>
 </div>
