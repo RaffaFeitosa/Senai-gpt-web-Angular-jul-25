@@ -168,6 +168,7 @@ justify-content: center;
 
 .input-container i {
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .input-container input {
@@ -175,6 +176,7 @@ justify-content: center;
     border: none;
     width: 400px;
     outline: none;
+
 }
 
 .send-button {
@@ -205,6 +207,9 @@ justify-content: center;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
+  background-image: url(/imgs/gifgoku.gif);
+  background-size: cover;
+
 
   /* Para corrigir o bug que acontece quando há muitas mensagens no chat */
   height: 90dvh;
@@ -226,7 +231,7 @@ justify-content: center;
 
 .chat-container .message-item {
 
-  background-color: #ccc;
+  background-color: #d73e1f;
   border-radius: 12px 12px 0 12px;
   padding: 20px;
   width: 300px;
@@ -237,12 +242,12 @@ justify-content: center;
 
 .chat-container .message-item.chatbot {
 
-  background-color: #ccc;
+  background-color: #2e1589;
   border-radius: 12px 12px 12px 0px;
   padding: 20px;
   width: 300px;
   margin-left: unset;
   color: white;
-  background: #000;
+  background: #3247ab;
 
 }

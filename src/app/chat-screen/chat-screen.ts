@@ -93,7 +93,7 @@ export class ChatScreen {
     this.cd.detectChanges();
 
   }
-  async enviarMensagem () {
+  async enviarMensagem() {
 
     let novaMensagemUsuario = {
 
@@ -104,6 +104,52 @@ export class ChatScreen {
 
 
     };
+    let novaMensagemUsuarioResponse = await firstValueFrom(this.http.post("https://senai-gpt-api.azurewebsites.net/messages", novaMensagemUsuario, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("meuToken")
+      }
+    }));
+    // Atualiza as msg da tela
+    await this.onChatClick(this.chatSelecionado);
+
+    //2 Respostas da IA
+    let respostaIAResponse = await firstValueFrom(this.http.post("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent", {
+      "contents": [
+        {
+          "parts": [
+            {
+              "text": this.mensagenUsuario.value + ". Me de uma resposta objetiva."
+            }
+          ]
+        }
+      ]
+    }, {
+      headers: {
+        "Content-Type": "application/json",
+        "X-goog-api-key": "AIzaSyDV2HECQZLpWJrqCKEbuq7TT5QPKKdLOdo"
+      }
+    })) as any
+
+    let novaRespostaIA = {
+      chatId: this.chatSelecionado.id,
+      userId: "chatbot",
+      text: respostaIAResponse.candidates[0].content.parts[0].text
+    }
+
+
+      //3 - SAlva a resposta da IA no Banco de dados
+
+          let novaRespostaIAResponse = await firstValueFrom(this.http.post("https://senai-gpt-api.azurewebsites.net/messages", novaRespostaIA, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("meuToken")
+      }
+    }));
+
+      await this.onChatClick(this.chatSelecionado);
+    }
 
   }
-}
+
+
