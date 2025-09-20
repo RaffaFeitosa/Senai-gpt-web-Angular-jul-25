@@ -30,6 +30,7 @@
     background-color: white;
     display: flex;
     flex-direction: column;
+    overflow: auto;
 
 
 }
@@ -207,8 +208,7 @@ justify-content: center;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
-  background-image: url(/imgs/gifgoku.gif);
-  background-size: cover;
+
 
 
   /* Para corrigir o bug que acontece quando há muitas mensagens no chat */
