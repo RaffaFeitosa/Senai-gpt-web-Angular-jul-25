@@ -27,7 +27,6 @@
 
     width: 100%;
     min-height: 200px;
-    background-color: white;
     display: flex;
     flex-direction: column;
     overflow: auto;
@@ -39,7 +38,6 @@
 
     width: 100%;
     min-height: 200px;
-    background-color: white;
     display: flex;
     flex-direction: column;
     line-height: normal;
@@ -251,3 +249,37 @@ justify-content: center;
   background: #3247ab;
 
 }
+::ng-deep body.dark-mode .left-panel {
+  background-color: black ;
+}
+::ng-deep body.dark-mode .central-panel {
+  background-color: #000000;
+}
+::ng-deep body.dark-mode .conversa {
+  background-color: black;
+  color: white;
+}
+::ng-deep body.dark-mode .action{
+  background-color: black;
+  color: white;
+}
+::ng-deep body.dark-mode .novo-chat-button{
+background-color: white;
+color: black;
+}
+::ng-deep body.dark-mode .texto{
+  background-color: black;
+  color: white;
+
+}
+::ng-deep body.dark-mode .teste{
+  color: white;
+}
+::ng-deep body.dark-mode .input-container{
+  background-color: #1c1c1c;
+  color: white;
+}
+::ng-deep main.dark-mode {
+  
+}
+

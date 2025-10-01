@@ -32,6 +32,7 @@ export class ChatScreen {
   chatSelecionado: IChat;
   mensagens: IMesssage[];
   mensagenUsuario = new FormControl("");
+  darkMode: boolean = false;
 
   constructor(private http: HttpClient, private cd: ChangeDetectorRef) { //constro a clase
     this.chats = [];
@@ -42,6 +43,14 @@ export class ChatScreen {
   ngOnInit() { //Executado quando o Angular está pronto para rodar \\Buscar dados na API.
 
     this.getChats();
+
+    let darkModeLocalStorage = localStorage.getItem("darkMode");
+
+    if (darkModeLocalStorage == "true"){
+
+      this.darkMode = true;
+      document.body.classList.toggle("dark-mode", this.darkMode);
+    }
 
   }
 
@@ -187,12 +196,21 @@ export class ChatScreen {
     deslogar() {
 
       //1 alternatica
-     // localStorage.removeItem("meuToken");
-     // localStorage.removeItem("meuId");
+      localStorage.removeItem("meuToken");
+      localStorage.removeItem("meuId");
      //2 alternativa
-     localStorage.clear();
+     //localStorage.clear();
 
      window.location.href = "login";
+
+    }
+    ligarDesligarDarkMode() {
+
+      this.darkMode = !this.darkMode;
+
+      document.body.classList.toggle("dark-mode", this.darkMode);
+
+      localStorage.setItem("darkMode", this.darkMode.toString());
 
     }
 

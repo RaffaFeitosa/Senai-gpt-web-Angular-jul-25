@@ -41,15 +41,16 @@
 img /* Tags, sem nenhum prefixo */
 
 .login-container img {
-    height: 60px;
+    height: 80px;
 
 }
+
 
 .inpt {
 
     padding: 18px;
     background-color: #F7F9FB;
-    width: 377px;
+    width: 60%;
     border: 1px solid #ccc;
     border-radius: 10px;
     margin-bottom: 16px;
@@ -60,7 +61,7 @@ img /* Tags, sem nenhum prefixo */
 
     padding: 18px;
     background-color: #1c1c1c;
-    width: 377px;
+    width: 60%;
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -89,5 +90,36 @@ img /* Tags, sem nenhum prefixo */
   font-size: 16px;
   display: flex;
   margin-top: 10px;
+
+}
+@media screen and (max-width: 1366px) {
+  /* Até 1366 px - Ou seja, é um monitor pequeno */
+}
+/* */
+@media screen and (max-width: 1000px) {
+  /* Até 1366 px - Ou seja, é um tablet*/
+  .robo-image {
+    background-position: center;
+  }
+  .login-container {
+  width: 50vw;
+ }
+.login-container img {
+  width: 50%;
+}
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .robo-image {
+    display: none ;
+  }
+ .login-container {
+  width: 100vw;
+ }
+.login-container img {
+  width: 50%;
+}
 
 }
