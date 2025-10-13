@@ -163,6 +163,8 @@ export class ChatScreen {
     }));
 
     await this.onChatClick(this.chatSelecionado);
+
+    this.mensagenUsuario.setValue("");
   }
   async novoChat() {
 
@@ -204,6 +206,44 @@ export class ChatScreen {
      window.location.href = "login";
 
     }
+
+    async deletarChatSelecionado() {
+
+    let confirmation = confirm("Deseja realmente apagar o chat " + this.chatSelecionado.chatTitle + "?")
+
+    if (!confirmation) {
+
+      return
+
+    }
+
+    try {
+
+
+      let deleteResponse = await firstValueFrom(this.http.delete("https://senai-gpt-api.azurewebsites.net/chats/" + this.chatSelecionado.id, {
+        headers: {
+          "content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("meuToken")
+        }
+
+      })) as IChat;
+    } catch (error) {
+
+      console.log("Erro no delete: " + error);
+
+    }
+
+    //atualiza chats no menu lateral
+    await this.getChats();
+
+    //remove o chat clicado limpando da tela
+    this.chatSelecionado = null!;
+
+    //força a atualização da tela
+    this.cd.detectChanges();
+
+  }
+
     ligarDesligarDarkMode() {
 
       this.darkMode = !this.darkMode;

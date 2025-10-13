@@ -14,9 +14,11 @@
     </div>
 
     <div class="bottom">
-      <button class="action">
+        @if(chatSelecionado !=null){
+      <button class="action" (click)="deletarChatSelecionado()">
         <i class="fa-regular fa-trash-can"></i>
         Clear conversations</button>
+      }
       <button class="action" (click)="ligarDesligarDarkMode()">
         <i class="fa-regular fa-lightbulb"></i>
         Dark mode</button>
@@ -39,7 +41,7 @@
   <main class="central-panel">
     @if (chatSelecionado == null){
     <div class="logosenai">
-      <img [src]="darkMode == true? 'imgs/LOGODARK.png' : 'imgs/LOGO.png'" alt="Login SenaiGPT">
+     <img [src]="darkMode == true? 'imgs/LOGODARK.png' : 'imgs/LOGO.png'" alt="Login SenaiGPT">
 
     </div>
     <div class="disposicao1">
@@ -98,7 +100,7 @@
 
       <i class="fa-regular fa-images"></i>
 
-      <input [formControl]="mensagenUsuario" type="text" placeholder="Type message">
+      <input [formControl]="mensagenUsuario" type="text" placeholder="Type message" (keydown.enter)="enviarMensagem()">
 
       <i class="fa-regular fa-paper-plane" (click)="enviarMensagem()"></i>
 
